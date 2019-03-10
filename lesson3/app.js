@@ -7,31 +7,31 @@ const questions =
 
 { question: 'Сколько будет 5 << 2 ?', answer: 20, type: 'prompt'}];
 
+function askQuestion(questionNumber) {
+	if (questions[questionNumber].type == 'prompt') {
+		let ask =  prompt(questions[questionNumber].question, ''); 
+		if (ask == (questions[questionNumber].answer)) {
+			return true;
+		} 
+		else if (!ask || isNaN(ask)) { 
+			alert('Ошибка');
+		}
+	} else if (questions[questionNumber].type == 'confirm') {
+		let ask =  confirm(questions[questionNumber].question, ''); 
+		if (ask == (questions[questionNumber].answer)) {
+			return true;
+		} 
+	}
+}
+
 for (let i=0; i < questions.length; i++) {
 	
-	if(askQuestion()) {
+	if(askQuestion(i)) {
 		points += 10;
 		console.log('Правильно, + 10 очков!');
 	} else {
 		console.log('Неправильно!');
 	} 
-
-	function askQuestion() {
-		if (questions[i].type == 'prompt') {
-			let ask =  prompt(questions[i].question, ''); 
-			if (ask == (questions[i].answer)) {
-				return true;
-			} 
-			else if (!ask || isNaN(ask)) { 
-				alert('Ошибка');
-			}
-		} else if (questions[i].type == 'confirm') {
-			let ask =  confirm(questions[i].question, ''); 
-			if (ask == (questions[i].answer)) {
-				return true;
-			} 
-		}
-	}
 };
 
 alert('Вы набрали ' + points + ' очков');
