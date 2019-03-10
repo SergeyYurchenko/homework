@@ -27,6 +27,9 @@ for (let i=0; i < questions.length; i++) {
 			}
 		} else if (questions[i].type == 'confirm') {
 			let ask =  confirm(questions[i].question, ''); 
+			if (ask == (questions[i].answer)) {
+				return true;
+			} 
 		}
 	}
 };
