@@ -36,6 +36,7 @@ function getAction() {
 		alert('Знак арифметической операции некорректный');
 		return getAction();
 	}
+	return action;
 }
 
 function checkOp(op) {
