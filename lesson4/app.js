@@ -1,36 +1,22 @@
 "use strict"
-const calcSettings = {
-	operandFirst: 'Первое число', 
-	mathOperation: 'Введите знак арифметической операции (+, -, *, /)', 
-	operandSecond: 'Второе число'
-}
-let operandFirst;
-let operandSecond;
+const calcSettings = [
+	{operand: 'Первое число'},
+	{operand: 'Второе число'},
+	{mathOperation: 'Введите знак арифметической операции (+, -, *, /)'}
+];
 
 function getOperand(operandNumber) {
-	switch(operandNumber) {
-		case '1':  
-		operandFirst = parseInt(prompt(calcSettings.operandFirst, ''));
-		
-		if (isNaN(operandFirst) || operandFirst === '' || operandFirst === null) {
-		 	alert('Ошибка!')
-		 	return getOperand(operandNumber);
-		}
-		break;
-
-		case '2': 
-		operandSecond = parseInt(prompt(calcSettings.operandSecond, ''));
-
-	 	if (isNaN(operandSecond) || operandSecond === '' || operandSecond === null) {
-		 	alert('Ошибка!')
-		 	return getOperand(operandNumber);
-		}
-		break;
+	let operand = parseInt(prompt(calcSettings[operandNumber].operand, ''));
+					   
+	if (isNaN(operand) || operand === '' || operand === null) {
+	 	alert('Ошибка!')
+	 	return getOperand(operandNumber);
 	}
+	return operand;
 } 		
 
 function getAction() {
-	let action = prompt(calcSettings.mathOperation, '');
+	let action = prompt(calcSettings[2].mathOperation, '');
 
 	if (!checkOp(action)) {
 		alert('Знак арифметической операции некорректный');
@@ -51,18 +37,14 @@ function calculate(value1, value2, value3) {
 	} else if(value3 === '*') {
 	    return value1*value2;
 	} else if(value3 === '/') {
-	    if(y == 0) {
-	        return 'Делить на ноль нельзя!';
-	    } else {
-	        return value1/value2;
-	    }
+        return value1/value2;
 	}
 }
 
-const operandA = getOperand('1'); 
-const operandB = getOperand('2'); 
+const operandA = getOperand(0); 
+const operandB = getOperand(1); 
 const action = getAction(); 
-const result = calculate(operandFirst, operandSecond, action)
+const result = calculate(operandA, operandB, action)
 
 alert('Результат: ' + result);
 
