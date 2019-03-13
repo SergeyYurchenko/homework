@@ -10,17 +10,14 @@ const questions =
 function askQuestion(questionNumber) {
 	if (questions[questionNumber].type == 'prompt') {
 		let ask =  prompt(questions[questionNumber].question, ''); 
-		if (ask == (questions[questionNumber].answer)) {
-			return true;
-		} 
-		else if (!ask || isNaN(ask)) { 
+		return (ask == (questions[questionNumber].answer)); 
+
+		if (ask === '' || ask === null  || isNaN(ask)) { 
 			alert('Ошибка');
 		}
 	} else if (questions[questionNumber].type == 'confirm') {
 		let ask =  confirm(questions[questionNumber].question, ''); 
-		if (ask == (questions[questionNumber].answer)) {
-			return true;
-		} 
+		return ask == (questions[questionNumber].answer);  
 	}
 }
 
