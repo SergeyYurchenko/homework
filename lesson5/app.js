@@ -1,14 +1,4 @@
 "use strict"
-/*Задание 1
-С помощью prompt просим пользователя ввести число. 
-Обязательно валидируем ввод.
-Затем с помощью alert выводим сколько в этом числе было четных цифр.
-Например 223344 - должен вернуть 4, 111 - должен вернуть 0.
-
-Задание 2
-генерируем два рандомных целых числа от 1000 до 2000 
-и выводим большее из них.*/
-
 function get_even_count(userNumber) {
 	var numberArray = userNumber.toString().split(['']);
 	var count = 0;
@@ -21,3 +11,19 @@ function get_even_count(userNumber) {
 	return alert(count);
 }
 get_even_count(prompt('Введите число', ''));
+
+
+function random(min, max) {
+	let numberFirst = Math.trunc((Math.random() * (max - min) + min));
+	let numberSecond = Math.trunc((Math.random() * (max - min) + min));
+	console.log(numberFirst);
+	console.log(numberSecond);
+
+	if (numberFirst > numberSecond) {
+		alert(numberFirst);
+	} else {
+		alert(numberSecond);
+	}
+}
+
+random(1000, 2000);
