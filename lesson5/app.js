@@ -1,6 +1,6 @@
 "use strict"
 function get_even_count(userNumber) {
-	var numberArray = userNumber.toString().split(['']);
+	var numberArray = userNumber.toString().split('');
 	var count = 0;
 
  	for (let i = 0; i < numberArray.length; i++) {
@@ -12,18 +12,11 @@ function get_even_count(userNumber) {
 }
 get_even_count(prompt('Введите число', ''));
 
-
-function random(min, max) {
-	let numberFirst = Math.trunc((Math.random() * (max - min) + min));
-	let numberSecond = Math.trunc((Math.random() * (max - min) + min));
-	console.log(numberFirst);
-	console.log(numberSecond);
-
-	if (numberFirst > numberSecond) {
-		alert(numberFirst);
-	} else {
-		alert(numberSecond);
-	}
+function generateNumber(min, max) {
+	return Math.trunc((Math.random() * (max - min) + min));
 }
-
-random(1000, 2000);
+let firstNumber = generateNumber(1000, 2000);
+let secondNumber = generateNumber(1000, 2000);
+console.log(firstNumber);
+console.log(secondNumber);
+alert(Math.max(firstNumber,secondNumber));
