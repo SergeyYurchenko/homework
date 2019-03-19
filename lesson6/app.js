@@ -3,14 +3,14 @@
 function copy(object) {
 	let objectCopy = {};
      
-     	for (let key in obj) {
+     	for (let key in object) {
 
- 			if (typeof obj[key] !== "object") {
-	    		objectCopy[key] = obj[key];
+ 			if (typeof object[key] !== "object") {
+	    		objectCopy[key] = object[key];
 	    	} 
 	    	
 	    	else {
-		    	objectCopy[key] = Object.assign({}, obj);
+		    	objectCopy[key] = copy(obj[key]);
 			}	
 		}		
 	return objectCopy;
