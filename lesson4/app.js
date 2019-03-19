@@ -1,48 +1,51 @@
 "use strict"
-const calcSettings = [
-	{operand: 'Первое число'},
-	{operand: 'Второе число'},
-	{mathOperation: 'Введите знак арифметической операции (+, -, *, /)'}
-];
 
-function getOperand(operandNumber) {
-	let operand = parseInt(prompt(calcSettings[operandNumber].operand, ''));
+function getOperand(Question) {
+	let operand = prompt(Question, '');
 					   
-	if (isNaN(operand) || operand === '' || operand === null) {
+	if (isOperandValid(operand)) {
 	 	alert('Ошибка!')
-	 	return getOperand(operandNumber);
+	 	return getOperand(Question);
 	}
 	return operand;
 } 		
 
-function getAction() {
-	let action = prompt(calcSettings[2].mathOperation, '');
+function isOperandValid(operandToCheck) {
+	return isNaN(operandToCheck) || operandToCheck === '' || operandToCheck === null || deleteSpace(operandToCheck) === '';
+}
 
-	if (!checkOp(action)) {
+function deleteSpace(operand){
+    return (operand.split(' ').join(''));     
+}
+
+function getAction() {
+	let action = prompt('Введите знак арифметической операции (+, -, *, /)', '');
+
+	if (!isActionValid(action)) {
 		alert('Знак арифметической операции некорректный');
 		return getAction();
 	}
 	return action;
 }
 
-function checkOp(op) {
-	return op === '+' || op === '-' || op === '*' || op === '/';
+function isActionValid(action) {
+	return action === '+' || action === '-' || action === '*' || action === '/';
 }
 
-function calculate(value1, value2, value3) {
-	if(value3 === '+') {
-	    return value1+value2;
-	} else if(value3 === '-') {
-	    return value1-value2;
-	} else if(value3 === '*') {
-	    return value1*value2;
-	} else if(value3 === '/') {
-        return value1/value2;
+function calculate(operandA, operandB, action) {
+	if(action === '+') {
+	    return Number(operandA) + Number(operandB);
+	} else if(action === '-') {
+	    return Number(operandA) - Number(operandB);
+	} else if(action === '*') {
+	    return Number(operandA) * Number(operandB);
+	} else if(action === '/') {
+        return Number(operandA) / Number(operandB);
 	}
 }
 
-const operandA = getOperand(0); 
-const operandB = getOperand(1); 
+const operandA = getOperand('Первое число'); 
+const operandB = getOperand('Второе число'); 
 const action = getAction(); 
 const result = calculate(operandA, operandB, action)
 
