@@ -1,5 +1,11 @@
 "use strict"
 function get_even_count(userNumber) {
+
+	if (check_number(userNumber)) {
+ 		alert('Ошибка!');
+ 		return get_even_count(userNumber);
+	}
+
 	var numberArray = userNumber.toString().split('');
 	var count = 0;
 
@@ -10,8 +16,13 @@ function get_even_count(userNumber) {
  	}
 	return alert(count);
 }
-get_even_count(prompt('Введите число', ''));
 
+function check_number(number) {
+	return isNaN(number) || number === '' || number === null;
+}
+
+get_even_count(prompt('Введите число', ''));
+	
 function generateNumber(min, max) {
 	return Math.trunc((Math.random() * (max - min) + min));
 }
