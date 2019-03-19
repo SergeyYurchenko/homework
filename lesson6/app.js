@@ -10,7 +10,7 @@ function copy(object) {
 	    	} 
 	    	
 	    	else {
-		    	objectCopy[key] = copy(obj[key]);
+		    	objectCopy[key] = Object.assign({}, obj);
 			}	
 		}		
 	return objectCopy;
@@ -19,5 +19,5 @@ function copy(object) {
 const obj = {name: 'Alex', age: 33, adress: {country: 'UA', city: 'Dnipro'}};
 const objCopy = copy(obj);
 
-console.log(obj);
+console.log(obj, 'original');
 console.log(objCopy);
