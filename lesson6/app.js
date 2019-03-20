@@ -13,7 +13,7 @@ function copy(object) {
 				}
 	    	}
 
-	    	else if (typeof item === "object" && !Array.isArray(object[key]) && item !== null) {
+	    	else if (typeof object[key] === "object" && !Array.isArray(object[key]) && object[key] !== null) {
 	      		objectCopy[key] = copy(object[key]);
 	     	} 
 
