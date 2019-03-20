@@ -5,20 +5,20 @@ function copy(object) {
      
      	for (let key in object) {
      		
- 			if (typeof object[key] !== "object") {
-	    		objectCopy[key] = object[key];
-	    	} 
-
-	    	else if (typeof object[key] == "array") {
+	    	if (object[key] == Array) {   
 	    		objectCopy = [];
 
-				for (let i = 0, len = obj.length; i < len; i++) {
-					arrayCopy[i] = copy(object[i]);
+				for (let i = 0; i < obj.length; i++) {
+					objectCopy[i] = copy(object[i]);
 				}
 	    	}
 
+	    	else if (typeof item === "object" && !Array.isArray(object[key]) && item !== null) {
+	      		objectCopy[key] = copy(object[key]);
+	     	} 
+
 	    	else {
-		    	objectCopy[key] = copy(object[key]);
+		    	objectCopy[key] = object[key];
 			}	
 		}		
 	return objectCopy;
@@ -28,11 +28,13 @@ const obj = {
 	name: 'Alex', 
 	age: 33, 
 	adress: {country: 'UA', city: 'Dnipro'},
-	langs: [
+	langs: 
+	[	
         { name: 'English', level: 'c2'},
         { name: 'Deutsch', level: 'b1'},
-        { name: 'Arabic',  level: 'a2'}
-    ]
+        { name: 'Arabic',  level: 'a2'},
+    ],
+    numbers: [22, 33]
 };
 const objCopy = copy(obj);
 
