@@ -1,19 +1,11 @@
 "use strict"
 
 function copy(object) {
-	let objectCopy = {};
+	let objectCopy = Array.isArray(object) ? [] : {};
      
      	for (let key in object) {
-     		
-	    	if (object[key] == Array) {   
-	    		objectCopy = [];
 
-				for (let i = 0; i < obj.length; i++) {
-					objectCopy[i] = copy(object[i]);
-				}
-	    	}
-
-	    	else if (typeof object[key] === "object" && !Array.isArray(object[key]) && object[key] !== null) {
+	    	if (typeof object[key] === "object" && object[key] !== null) {
 	      		objectCopy[key] = copy(object[key]);
 	     	} 
 
