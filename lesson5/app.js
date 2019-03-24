@@ -17,8 +17,8 @@ function get_even_count(userNumber) {
 	return alert(count);
 }
 
-function check_number(number) {
-	return isNaN(number) || number === '' || number === null || deleteSpace(number) === '';
+function isNumberFalse(number) {
+	return isNaN(number) || number === null || deleteSpace(number) === '';
 }
 
 function deleteSpace(number){
