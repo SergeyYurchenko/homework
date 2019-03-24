@@ -1,0 +1,14 @@
+#more_pizza {
+    margin-top: 20px; 
+    margin-left: 15px;
+    float: left;
+    cursor: pointer;
+}
+
+#pizza_list {
+    float: left;
+}
+
+.pizza_list__item {
+    cursor: pointer;
+}
